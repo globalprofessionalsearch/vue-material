@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,21 +65,55 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 410);
+/******/ 	return __webpack_require__(__webpack_require__.s = 330);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
 /***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
@@ -115,11 +149,12 @@ module.exports = function normalizeComponent (
 
   // inject cssModules
   if (cssModules) {
-    var computed = options.computed || (options.computed = {})
+    var computed = Object.create(options.computed || null)
     Object.keys(cssModules).forEach((function (key) {
       var module = cssModules[key]
       computed[key] = function () { return module }
     }))
+    options.computed = computed
   }
 
   return {
@@ -132,16 +167,25 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 128:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 164:
+/***/ (function(module, exports) {
+
+module.exports = ".THEME_NAME.md-input-container.md-input-invalid:after {\n  background-color: WARN-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-invalid label,\n.THEME_NAME.md-input-container.md-input-invalid input,\n.THEME_NAME.md-input-container.md-input-invalid textarea,\n.THEME_NAME.md-input-container.md-input-invalid .md-error,\n.THEME_NAME.md-input-container.md-input-invalid .md-count,\n.THEME_NAME.md-input-container.md-input-invalid .md-icon:not(.md-icon-delete) {\n  color: WARN-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-focused.md-input-inline label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.THEME_NAME.md-input-container.md-input-focused.md-input-required label:after {\n  color: WARN-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-focused:after {\n  height: 2px;\n  background-color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-focused input,\n.THEME_NAME.md-input-container.md-input-focused textarea {\n  color: PRIMARY-COLOR;\n  text-shadow: 0 0 0 BACKGROUND-CONTRAST;\n  -webkit-text-fill-color: transparent; }\n\n.THEME_NAME.md-input-container.md-input-focused label,\n.THEME_NAME.md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-disabled label,\n.THEME_NAME.md-input-container.md-input-disabled input,\n.THEME_NAME.md-input-container.md-input-disabled textarea,\n.THEME_NAME.md-input-container.md-input-disabled .md-error,\n.THEME_NAME.md-input-container.md-input-disabled .md-count,\n.THEME_NAME.md-input-container.md-input-disabled .md-icon:not(.md-icon-delete),\n.THEME_NAME.md-input-container.md-input-disabled ::-webkit-input-placeholder {\n  color: BACKGROUND-CONTRAST-0.38; }\n\n.THEME_NAME.md-input-container .md-icon:not(.md-icon-delete):after {\n  background: BACKGROUND-COLOR; }\n"
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     mdTheme: String
   },
@@ -189,61 +233,264 @@ exports.default = {
       this.$material.setCurrentTheme('default');
     }
   }
-};
+});
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 103:
+/***/ 210:
 /***/ (function(module, exports, __webpack_require__) {
 
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(80),
+  /* template */
+  __webpack_require__(267),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/luis/apps/vue-material/src/components/mdInputContainer/mdInput.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdInput.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-22df0c6d", Component.options)
+  } else {
+    hotAPI.reload("data-v-22df0c6d", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 211:
+/***/ (function(module, exports, __webpack_require__) {
+
+
+/* styles */
+__webpack_require__(128)
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(81),
+  /* template */
+  __webpack_require__(269),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/luis/apps/vue-material/src/components/mdInputContainer/mdInputContainer.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdInputContainer.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-271c2778", Component.options)
+  } else {
+    hotAPI.reload("data-v-271c2778", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 212:
+/***/ (function(module, exports, __webpack_require__) {
+
+var Component = __webpack_require__(1)(
+  /* script */
+  __webpack_require__(82),
+  /* template */
+  __webpack_require__(296),
+  /* scopeId */
+  null,
+  /* cssModules */
+  null
+)
+Component.options.__file = "/home/luis/apps/vue-material/src/components/mdInputContainer/mdTextarea.vue"
+if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
+if (Component.options.functional) {console.error("[vue-loader] mdTextarea.vue: functional components are not supported with templates, they should use render functions.")}
+
+/* hot reload */
+if (false) {(function () {
+  var hotAPI = require("vue-hot-reload-api")
+  hotAPI.install(require("vue"), false)
+  if (!hotAPI.compatible) return
+  module.hot.accept()
+  if (!module.hot.data) {
+    hotAPI.createRecord("data-v-6243e5e7", Component.options)
+  } else {
+    hotAPI.reload("data-v-6243e5e7", Component.options)
+  }
+})()}
+
+module.exports = Component.exports
+
+
+/***/ }),
+
+/***/ 22:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdInputContainer_vue__ = __webpack_require__(211);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdInputContainer_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdInputContainer_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdInput_vue__ = __webpack_require__(210);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdInput_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdInput_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdTextarea_vue__ = __webpack_require__(212);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__mdTextarea_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2__mdTextarea_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mdInputContainer_theme__ = __webpack_require__(164);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__mdInputContainer_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_3__mdInputContainer_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = install;
 
-var _mdInputContainer = __webpack_require__(291);
 
-var _mdInputContainer2 = _interopRequireDefault(_mdInputContainer);
-
-var _mdInput = __webpack_require__(290);
-
-var _mdInput2 = _interopRequireDefault(_mdInput);
-
-var _mdTextarea = __webpack_require__(292);
-
-var _mdTextarea2 = _interopRequireDefault(_mdTextarea);
-
-var _mdInputContainer3 = __webpack_require__(244);
-
-var _mdInputContainer4 = _interopRequireDefault(_mdInputContainer3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function install(Vue) {
-  Vue.component('md-input-container', _mdInputContainer2.default);
-  Vue.component('md-input', _mdInput2.default);
-  Vue.component('md-textarea', _mdTextarea2.default);
+  Vue.component('md-input-container', __WEBPACK_IMPORTED_MODULE_0__mdInputContainer_vue___default.a);
+  Vue.component('md-input', __WEBPACK_IMPORTED_MODULE_1__mdInput_vue___default.a);
+  Vue.component('md-textarea', __WEBPACK_IMPORTED_MODULE_2__mdTextarea_vue___default.a);
 
-  Vue.material.styles.push(_mdInputContainer4.default);
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_3__mdInputContainer_theme___default.a);
 }
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 12:
+/***/ 267:
 /***/ (function(module, exports, __webpack_require__) {
 
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('input', {
+    staticClass: "md-input",
+    attrs: {
+      "type": _vm.type,
+      "disabled": _vm.disabled,
+      "required": _vm.required,
+      "placeholder": _vm.placeholder,
+      "maxlength": _vm.maxlength
+    },
+    domProps: {
+      "value": _vm.value
+    },
+    on: {
+      "focus": _vm.onFocus,
+      "blur": _vm.onBlur,
+      "input": _vm.onInput,
+      "keydown": [function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "up", 38)) { return null; }
+        _vm.onInput($event)
+      }, function($event) {
+        if (!('button' in $event) && _vm._k($event.keyCode, "down", 40)) { return null; }
+        _vm.onInput($event)
+      }]
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-22df0c6d", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 269:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('div', {
+    staticClass: "md-input-container",
+    class: [_vm.themeClass, _vm.classes]
+  }, [_vm._t("default"), _vm._v(" "), (_vm.enableCounter) ? _c('span', {
+    staticClass: "md-count"
+  }, [_vm._v(_vm._s(_vm.inputLength) + " / " + _vm._s(_vm.counterLength))]) : _vm._e(), _vm._v(" "), (_vm.mdHasPassword) ? _c('md-button', {
+    staticClass: "md-icon-button md-toggle-password",
+    nativeOn: {
+      "click": function($event) {
+        _vm.togglePasswordType($event)
+      }
+    }
+  }, [_c('md-icon', [_vm._v(_vm._s(_vm.showPassword ? 'visibility_off' : 'visibility'))])], 1) : _vm._e(), _vm._v(" "), (_vm.mdClearable && _vm.hasValue) ? _c('md-button', {
+    staticClass: "md-icon-button md-clear-input",
+    nativeOn: {
+      "click": function($event) {
+        _vm.clearInput($event)
+      }
+    }
+  }, [_c('md-icon', [_vm._v("clear")])], 1) : _vm._e()], 2)
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-271c2778", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 296:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
+  return _c('textarea', {
+    staticClass: "md-input",
+    attrs: {
+      "disabled": _vm.disabled,
+      "required": _vm.required,
+      "placeholder": _vm.placeholder,
+      "maxlength": _vm.maxlength
+    },
+    domProps: {
+      "value": _vm.value
+    },
+    on: {
+      "focus": _vm.onFocus,
+      "blur": _vm.onBlur,
+      "input": _vm.onInput
+    }
+  })
+},staticRenderFns: []}
+module.exports.render._withStripped = true
+if (false) {
+  module.hot.accept()
+  if (module.hot.data) {
+     require("vue-hot-reload-api").rerender("data-v-6243e5e7", module.exports)
+  }
+}
+
+/***/ }),
+
+/***/ 3:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
+/* WEBPACK VAR INJECTION */(function(module) {var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
   if (!$parent || !$parent.$el) {
     return false;
   }
@@ -259,12 +506,21 @@ var getClosestVueParent = function getClosestVueParent($parent, cssClass) {
   return getClosestVueParent($parent.$parent, cssClass);
 };
 
-exports.default = getClosestVueParent;
+/* harmony default export */ __webpack_exports__["a"] = (getClosestVueParent);
 module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 122:
+/***/ 330:
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__(22);
+
+
+/***/ }),
+
+/***/ 41:
 /***/ (function(module, exports, __webpack_require__) {
 
 var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_DEFINE_RESULT__;/*!
@@ -563,530 +819,25 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 
 /***/ }),
 
-/***/ 153:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 7:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _common = __webpack_require__(62);
-
-var _common2 = _interopRequireDefault(_common);
-
-var _getClosestVueParent = __webpack_require__(12);
-
-var _getClosestVueParent2 = _interopRequireDefault(_getClosestVueParent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  mixins: [_common2.default],
-  props: {
-    type: {
-      type: String,
-      default: 'text'
-    }
-  },
-  mounted: function mounted() {
-    var _this = this;
-
-    this.$nextTick((function () {
-      _this.parentContainer = (0, _getClosestVueParent2.default)(_this.$parent, 'md-input-container');
-
-      if (!_this.parentContainer) {
-        _this.$destroy();
-
-        throw new Error('You should wrap the md-input in a md-input-container');
-      }
-
-      _this.setParentDisabled();
-      _this.setParentRequired();
-      _this.setParentPlaceholder();
-      _this.handleMaxLength();
-      _this.updateValues();
-    }));
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 154:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _mixin = __webpack_require__(1);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-var _isArray = __webpack_require__(59);
-
-var _isArray2 = _interopRequireDefault(_isArray);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: {
-    mdInline: Boolean,
-    mdHasPassword: Boolean
-  },
-  mixins: [_mixin2.default],
-  data: function data() {
-    return {
-      value: '',
-      input: false,
-      showPassword: false,
-      enableCounter: false,
-      hasSelect: false,
-      hasPlaceholder: false,
-      hasFile: false,
-      isDisabled: false,
-      isRequired: false,
-      isFocused: false,
-      counterLength: 0,
-      inputLength: 0
-    };
-  },
-
-  computed: {
-    hasValue: function hasValue() {
-      if ((0, _isArray2.default)(this.value)) {
-        return this.value.length > 0;
-      }
-
-      return Boolean(this.value);
-    },
-    classes: function classes() {
-      return {
-        'md-input-inline': this.mdInline,
-        'md-has-password': this.mdHasPassword,
-        'md-has-select': this.hasSelect,
-        'md-has-file': this.hasFile,
-        'md-has-value': this.hasValue,
-        'md-input-placeholder': this.hasPlaceholder,
-        'md-input-disabled': this.isDisabled,
-        'md-input-required': this.isRequired,
-        'md-input-focused': this.isFocused
-      };
-    }
-  },
-  methods: {
-    isInput: function isInput() {
-      return this.input && this.input.tagName.toLowerCase() === 'input';
-    },
-    togglePasswordType: function togglePasswordType() {
-      if (this.isInput()) {
-        if (this.input.type === 'password') {
-          this.input.type = 'text';
-          this.showPassword = true;
-        } else {
-          this.input.type = 'password';
-          this.showPassword = false;
-        }
-
-        this.input.focus();
-      }
-    },
-    setValue: function setValue(value) {
-      this.value = value;
-    }
-  },
-  mounted: function mounted() {
-    this.input = this.$el.querySelectorAll('input, textarea, select, .md-file')[0];
-
-    if (!this.input) {
-      this.$destroy();
-
-      throw new Error('Missing input/select/textarea inside md-input-container');
-    }
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 155:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _autosize = __webpack_require__(122);
-
-var _autosize2 = _interopRequireDefault(_autosize);
-
-var _common = __webpack_require__(62);
-
-var _common2 = _interopRequireDefault(_common);
-
-var _getClosestVueParent = __webpack_require__(12);
-
-var _getClosestVueParent2 = _interopRequireDefault(_getClosestVueParent);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  mixins: [_common2.default],
-  watch: {
-    value: function value() {
-      var _this = this;
-
-      this.$nextTick((function () {
-        _autosize2.default.update(_this.$el);
-      }));
-    }
-  },
-  mounted: function mounted() {
-    var _this2 = this;
-
-    this.$nextTick((function () {
-      _this2.parentContainer = (0, _getClosestVueParent2.default)(_this2.$parent, 'md-input-container');
-
-      if (!_this2.parentContainer) {
-        _this2.$destroy();
-
-        throw new Error('You should wrap the md-textarea in a md-input-container');
-      }
-
-      _this2.setParentDisabled();
-      _this2.setParentRequired();
-      _this2.setParentPlaceholder();
-      _this2.handleMaxLength();
-      _this2.updateValues();
-
-      if (!_this2.$el.getAttribute('rows')) {
-        _this2.$el.setAttribute('rows', '1');
-      }
-
-      (0, _autosize2.default)(_this2.$el);
-    }));
-  },
-  beforeDestroy: function beforeDestroy() {
-    _autosize2.default.destroy(this.$el);
-  }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 208:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 244:
-/***/ (function(module, exports) {
-
-module.exports = ".THEME_NAME.md-input-container.md-input-invalid:after {\n  background-color: WARN-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-invalid label,\n.THEME_NAME.md-input-container.md-input-invalid input,\n.THEME_NAME.md-input-container.md-input-invalid textarea,\n.THEME_NAME.md-input-container.md-input-invalid .md-error,\n.THEME_NAME.md-input-container.md-input-invalid .md-count,\n.THEME_NAME.md-input-container.md-input-invalid .md-icon:not(.md-icon-delete) {\n  color: WARN-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-focused.md-input-inline label {\n  color: rgba(0, 0, 0, 0.54); }\n\n.THEME_NAME.md-input-container.md-input-focused.md-input-required label:after {\n  color: WARN-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-focused:after {\n  height: 2px;\n  background-color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-focused input,\n.THEME_NAME.md-input-container.md-input-focused textarea {\n  color: PRIMARY-COLOR;\n  text-shadow: 0 0 0 BACKGROUND-CONTRAST;\n  -webkit-text-fill-color: transparent; }\n\n.THEME_NAME.md-input-container.md-input-focused label,\n.THEME_NAME.md-input-container.md-input-focused .md-icon:not(.md-icon-delete) {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-input-container.md-input-disabled label,\n.THEME_NAME.md-input-container.md-input-disabled input,\n.THEME_NAME.md-input-container.md-input-disabled textarea,\n.THEME_NAME.md-input-container.md-input-disabled .md-error,\n.THEME_NAME.md-input-container.md-input-disabled .md-count,\n.THEME_NAME.md-input-container.md-input-disabled .md-icon:not(.md-icon-delete),\n.THEME_NAME.md-input-container.md-input-disabled ::-webkit-input-placeholder {\n  color: BACKGROUND-CONTRAST-0.38; }\n\n.THEME_NAME.md-input-container .md-icon:not(.md-icon-delete):after {\n  background: BACKGROUND-COLOR; }\n"
-
-/***/ }),
-
-/***/ 290:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(153),
-  /* template */
-  __webpack_require__(347),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/mrufino/Projects/personal/github/vue-material/src/components/mdInputContainer/mdInput.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdInput.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-22df0c6d", Component.options)
-  } else {
-    hotAPI.reload("data-v-22df0c6d", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 291:
-/***/ (function(module, exports, __webpack_require__) {
-
-
-/* styles */
-__webpack_require__(208)
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(154),
-  /* template */
-  __webpack_require__(349),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/mrufino/Projects/personal/github/vue-material/src/components/mdInputContainer/mdInputContainer.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdInputContainer.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-271c2778", Component.options)
-  } else {
-    hotAPI.reload("data-v-271c2778", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 292:
-/***/ (function(module, exports, __webpack_require__) {
-
-var Component = __webpack_require__(0)(
-  /* script */
-  __webpack_require__(155),
-  /* template */
-  __webpack_require__(376),
-  /* scopeId */
-  null,
-  /* cssModules */
-  null
-)
-Component.options.__file = "/Users/mrufino/Projects/personal/github/vue-material/src/components/mdInputContainer/mdTextarea.vue"
-if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
-if (Component.options.functional) {console.error("[vue-loader] mdTextarea.vue: functional components are not supported with templates, they should use render functions.")}
-
-/* hot reload */
-if (false) {(function () {
-  var hotAPI = require("vue-hot-reload-api")
-  hotAPI.install(require("vue"), false)
-  if (!hotAPI.compatible) return
-  module.hot.accept()
-  if (!module.hot.data) {
-    hotAPI.createRecord("data-v-6243e5e7", Component.options)
-  } else {
-    hotAPI.reload("data-v-6243e5e7", Component.options)
-  }
-})()}
-
-module.exports = Component.exports
-
-
-/***/ }),
-
-/***/ 347:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('input', {
-    staticClass: "md-input",
-    attrs: {
-      "type": _vm.type,
-      "disabled": _vm.disabled,
-      "required": _vm.required,
-      "placeholder": _vm.placeholder,
-      "maxlength": _vm.maxlength
-    },
-    domProps: {
-      "value": _vm.value
-    },
-    on: {
-      "focus": _vm.onFocus,
-      "blur": _vm.onBlur,
-      "input": _vm.onInput,
-      "keydown": [function($event) {
-        if (_vm._k($event.keyCode, "up", 38)) { return; }
-        _vm.onInput($event)
-      }, function($event) {
-        if (_vm._k($event.keyCode, "down", 40)) { return; }
-        _vm.onInput($event)
-      }]
-    }
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-22df0c6d", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 349:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('div', {
-    staticClass: "md-input-container",
-    class: [_vm.themeClass, _vm.classes]
-  }, [_vm._t("default"), _vm._v(" "), (_vm.enableCounter) ? _c('span', {
-    staticClass: "md-count"
-  }, [_vm._v(_vm._s(_vm.inputLength) + " / " + _vm._s(_vm.counterLength))]) : _vm._e(), _vm._v(" "), (_vm.mdHasPassword) ? _c('md-button', {
-    staticClass: "md-icon-button md-toggle-password",
-    nativeOn: {
-      "click": function($event) {
-        _vm.togglePasswordType($event)
-      }
-    }
-  }, [_c('md-icon', [_vm._v(_vm._s(_vm.showPassword ? 'visibility_off' : 'visibility'))])], 1) : _vm._e()], 2)
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-271c2778", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 376:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
-  return _c('textarea', {
-    staticClass: "md-input",
-    attrs: {
-      "disabled": _vm.disabled,
-      "required": _vm.required,
-      "placeholder": _vm.placeholder,
-      "maxlength": _vm.maxlength
-    },
-    domProps: {
-      "value": _vm.value
-    },
-    on: {
-      "focus": _vm.onFocus,
-      "blur": _vm.onBlur,
-      "input": _vm.onInput
-    }
-  })
-},staticRenderFns: []}
-module.exports.render._withStripped = true
-if (false) {
-  module.hot.accept()
-  if (module.hot.data) {
-     require("vue-hot-reload-api").rerender("data-v-6243e5e7", module.exports)
-  }
-}
-
-/***/ }),
-
-/***/ 410:
-/***/ (function(module, exports, __webpack_require__) {
-
-module.exports = __webpack_require__(103);
-
-
-/***/ }),
-
-/***/ 59:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-var isArray = function isArray(value) {
+/* WEBPACK VAR INJECTION */(function(module) {var isArray = function isArray(value) {
   return value && value.constructor === Array;
 };
 
-exports.default = isArray;
+/* harmony default export */ __webpack_exports__["a"] = (isArray);
 module.exports = exports["default"];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 62:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 8:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     value: [String, Number],
     disabled: Boolean,
@@ -1095,9 +846,8 @@ exports.default = {
     placeholder: String
   },
   watch: {
-    value: function value(_value) {
-      this.setParentValue(_value);
-      this.updateValues(_value);
+    value: function value() {
+      this.updateValues();
     },
     disabled: function disabled() {
       this.setParentDisabled();
@@ -1129,11 +879,15 @@ exports.default = {
     setParentPlaceholder: function setParentPlaceholder() {
       this.parentContainer.hasPlaceholder = !!this.placeholder;
     },
-    updateValues: function updateValues(value) {
-      var newValue = value || this.$el.value || this.value;
+    updateValues: function updateValues() {
+      var _this = this;
 
-      this.setParentValue(newValue);
-      this.parentContainer.inputLength = newValue ? newValue.length : 0;
+      this.$nextTick((function () {
+        var newValue = _this.$el.value || _this.value;
+
+        _this.setParentValue(newValue);
+        _this.parentContainer.inputLength = newValue ? newValue.length : 0;
+      }));
     },
     onFocus: function onFocus() {
       if (this.parentContainer) {
@@ -1150,8 +904,267 @@ exports.default = {
       this.$emit('input', this.$el.value);
     }
   }
-};
+});
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 80:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__common__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_utils_getClosestVueParent__ = __webpack_require__(3);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-input',
+  props: {
+    type: {
+      type: String,
+      default: 'text'
+    }
+  },
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__common__["a" /* default */]],
+  mounted: function mounted() {
+    var _this = this;
+
+    this.$nextTick((function () {
+      _this.parentContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__core_utils_getClosestVueParent__["a" /* default */])(_this.$parent, 'md-input-container');
+
+      if (!_this.parentContainer) {
+        _this.$destroy();
+
+        throw new Error('You should wrap the md-input in a md-input-container');
+      }
+
+      _this.parentContainer.inputInstance = _this;
+      _this.setParentDisabled();
+      _this.setParentRequired();
+      _this.setParentPlaceholder();
+      _this.handleMaxLength();
+      _this.updateValues();
+    }));
+  }
+});
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 81:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__core_utils_isArray__ = __webpack_require__(7);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-input-container',
+  props: {
+    mdInline: Boolean,
+    mdHasPassword: Boolean,
+    mdClearable: Boolean
+  },
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__["a" /* default */]],
+  data: function data() {
+    return {
+      value: '',
+      input: false,
+      inputInstance: null,
+      showPassword: false,
+      enableCounter: false,
+      hasSelect: false,
+      hasPlaceholder: false,
+      hasFile: false,
+      isDisabled: false,
+      isRequired: false,
+      isFocused: false,
+      counterLength: 0,
+      inputLength: 0
+    };
+  },
+
+  computed: {
+    hasValue: function hasValue() {
+      if (__webpack_require__.i(__WEBPACK_IMPORTED_MODULE_1__core_utils_isArray__["a" /* default */])(this.value)) {
+        return this.value.length > 0;
+      }
+
+      return Boolean(this.value);
+    },
+    classes: function classes() {
+      return {
+        'md-input-inline': this.mdInline,
+        'md-has-password': this.mdHasPassword,
+        'md-clearable': this.mdClearable,
+        'md-has-select': this.hasSelect,
+        'md-has-file': this.hasFile,
+        'md-has-value': this.hasValue,
+        'md-input-placeholder': this.hasPlaceholder,
+        'md-input-disabled': this.isDisabled,
+        'md-input-required': this.isRequired,
+        'md-input-focused': this.isFocused
+      };
+    }
+  },
+  methods: {
+    isInput: function isInput() {
+      return this.input && this.input.tagName.toLowerCase() === 'input';
+    },
+    togglePasswordType: function togglePasswordType() {
+      if (this.isInput()) {
+        if (this.input.type === 'password') {
+          this.input.type = 'text';
+          this.showPassword = true;
+        } else {
+          this.input.type = 'password';
+          this.showPassword = false;
+        }
+
+        this.input.focus();
+      }
+    },
+    clearInput: function clearInput() {
+      this.inputInstance.$el.value = '';
+      this.inputInstance.$emit('input', '');
+      this.setValue('');
+    },
+    setValue: function setValue(value) {
+      this.value = value;
+    }
+  },
+  mounted: function mounted() {
+    this.input = this.$el.querySelectorAll('input, textarea, select, .md-file')[0];
+
+    if (!this.input) {
+      this.$destroy();
+
+      throw new Error('Missing input/select/textarea inside md-input-container');
+    }
+  }
+});
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 82:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_autosize__ = __webpack_require__(41);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_autosize___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_autosize__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__common__ = __webpack_require__(8);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_2__core_utils_getClosestVueParent__ = __webpack_require__(3);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-textarea',
+  mixins: [__WEBPACK_IMPORTED_MODULE_1__common__["a" /* default */]],
+  watch: {
+    value: function value() {
+      var _this = this;
+
+      this.$nextTick((function () {
+        return __WEBPACK_IMPORTED_MODULE_0_autosize___default.a.update(_this.$el);
+      }));
+    }
+  },
+  mounted: function mounted() {
+    var _this2 = this;
+
+    this.$nextTick((function () {
+      _this2.parentContainer = __webpack_require__.i(__WEBPACK_IMPORTED_MODULE_2__core_utils_getClosestVueParent__["a" /* default */])(_this2.$parent, 'md-input-container');
+
+      if (!_this2.parentContainer) {
+        _this2.$destroy();
+
+        throw new Error('You should wrap the md-textarea in a md-input-container');
+      }
+
+      _this2.parentContainer.inputInstance = _this2;
+      _this2.setParentDisabled();
+      _this2.setParentRequired();
+      _this2.setParentPlaceholder();
+      _this2.handleMaxLength();
+      _this2.updateValues();
+
+      if (!_this2.$el.getAttribute('rows')) {
+        _this2.$el.setAttribute('rows', '1');
+      }
+
+      __WEBPACK_IMPORTED_MODULE_0_autosize___default()(_this2.$el);
+      setTimeout((function () {
+        return __WEBPACK_IMPORTED_MODULE_0_autosize___default.a.update(_this2.$el);
+      }), 200);
+    }));
+  },
+  beforeDestroy: function beforeDestroy() {
+    __WEBPACK_IMPORTED_MODULE_0_autosize___default.a.destroy(this.$el);
+  }
+});
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ })
 

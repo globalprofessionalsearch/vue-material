@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,21 +65,55 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 414);
+/******/ 	return __webpack_require__(__webpack_require__.s = 334);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
 /***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
@@ -115,11 +149,12 @@ module.exports = function normalizeComponent (
 
   // inject cssModules
   if (cssModules) {
-    var computed = options.computed || (options.computed = {})
+    var computed = Object.create(options.computed || null)
     Object.keys(cssModules).forEach((function (key) {
       var module = cssModules[key]
       computed[key] = function () { return module }
     }))
+    options.computed = computed
   }
 
   return {
@@ -132,16 +167,25 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 129:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 167:
+/***/ (function(module, exports) {
+
+module.exports = ".THEME_NAME.md-progress {\n  background-color: PRIMARY-COLOR-0.38; }\n  .THEME_NAME.md-progress:not(.md-indeterminate) .md-progress-track {\n    background-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-progress .md-progress-track:after, .THEME_NAME.md-progress .md-progress-track:before {\n    background-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-progress.md-accent {\n    background-color: ACCENT-COLOR-0.38; }\n    .THEME_NAME.md-progress.md-accent:not(.md-indeterminate) .md-progress-track {\n      background-color: ACCENT-COLOR; }\n    .THEME_NAME.md-progress.md-accent .md-progress-track:after, .THEME_NAME.md-progress.md-accent .md-progress-track:before {\n      background-color: ACCENT-COLOR; }\n  .THEME_NAME.md-progress.md-warn {\n    background-color: WARN-COLOR-0.38; }\n    .THEME_NAME.md-progress.md-warn:not(.md-indeterminate) .md-progress-track {\n      background-color: WARN-COLOR; }\n    .THEME_NAME.md-progress.md-warn .md-progress-track:after, .THEME_NAME.md-progress.md-warn .md-progress-track:before {\n      background-color: WARN-COLOR; }\n"
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     mdTheme: String
   },
@@ -189,127 +233,30 @@ exports.default = {
       this.$material.setCurrentTheme('default');
     }
   }
-};
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 107:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
 });
-exports.default = install;
-
-var _mdProgress = __webpack_require__(304);
-
-var _mdProgress2 = _interopRequireDefault(_mdProgress);
-
-var _mdProgress3 = __webpack_require__(247);
-
-var _mdProgress4 = _interopRequireDefault(_mdProgress3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function install(Vue) {
-  Vue.component('md-progress', _mdProgress2.default);
-
-  Vue.material.styles.push(_mdProgress4.default);
-}
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 166:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _mixin = __webpack_require__(1);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-exports.default = {
-  props: {
-    mdIndeterminate: Boolean,
-    mdProgress: {
-      type: Number,
-      default: 0
-    }
-  },
-  mixins: [_mixin2.default],
-  computed: {
-    classes: function classes() {
-      return {
-        'md-indeterminate': this.mdIndeterminate
-      };
-    },
-    styles: function styles() {
-      if (!this.mdIndeterminate) {
-        return {
-          width: this.mdProgress + '%'
-        };
-      }
-    }
-  }
-}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 209:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 247:
-/***/ (function(module, exports) {
-
-module.exports = ".THEME_NAME.md-progress {\n  background-color: PRIMARY-COLOR-0.38; }\n  .THEME_NAME.md-progress:not(.md-indeterminate) .md-progress-track {\n    background-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-progress .md-progress-track:after, .THEME_NAME.md-progress .md-progress-track:before {\n    background-color: PRIMARY-COLOR; }\n  .THEME_NAME.md-progress.md-accent {\n    background-color: ACCENT-COLOR-0.38; }\n    .THEME_NAME.md-progress.md-accent:not(.md-indeterminate) .md-progress-track {\n      background-color: ACCENT-COLOR; }\n    .THEME_NAME.md-progress.md-accent .md-progress-track:after, .THEME_NAME.md-progress.md-accent .md-progress-track:before {\n      background-color: ACCENT-COLOR; }\n  .THEME_NAME.md-progress.md-warn {\n    background-color: WARN-COLOR-0.38; }\n    .THEME_NAME.md-progress.md-warn:not(.md-indeterminate) .md-progress-track {\n      background-color: WARN-COLOR; }\n    .THEME_NAME.md-progress.md-warn .md-progress-track:after, .THEME_NAME.md-progress.md-warn .md-progress-track:before {\n      background-color: WARN-COLOR; }\n"
-
-/***/ }),
-
-/***/ 304:
+/***/ 224:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(209)
+__webpack_require__(129)
 
-var Component = __webpack_require__(0)(
+var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(166),
+  __webpack_require__(94),
   /* template */
-  __webpack_require__(350),
+  __webpack_require__(270),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/mrufino/Projects/personal/github/vue-material/src/components/mdProgress/mdProgress.vue"
+Component.options.__file = "/home/luis/apps/vue-material/src/components/mdProgress/mdProgress.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdProgress.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -331,7 +278,30 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 350:
+/***/ 26:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdProgress_vue__ = __webpack_require__(224);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdProgress_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdProgress_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdProgress_theme__ = __webpack_require__(167);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdProgress_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdProgress_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
+
+
+
+function install(Vue) {
+  Vue.component('md-progress', __WEBPACK_IMPORTED_MODULE_0__mdProgress_vue___default.a);
+
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdProgress_theme___default.a);
+}
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
+
+/***/ }),
+
+/***/ 270:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -358,11 +328,60 @@ if (false) {
 
 /***/ }),
 
-/***/ 414:
+/***/ 334:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(107);
+module.exports = __webpack_require__(26);
 
+
+/***/ }),
+
+/***/ 94:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-progress',
+  props: {
+    mdIndeterminate: Boolean,
+    mdProgress: {
+      type: Number,
+      default: 0
+    }
+  },
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__["a" /* default */]],
+  computed: {
+    classes: function classes() {
+      return {
+        'md-indeterminate': this.mdIndeterminate
+      };
+    },
+    styles: function styles() {
+      if (!this.mdIndeterminate) {
+        return {
+          width: this.mdProgress + '%'
+        };
+      }
+    }
+  }
+});
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ })
 

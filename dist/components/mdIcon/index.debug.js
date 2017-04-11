@@ -11,41 +11,41 @@
 return /******/ (function(modules) { // webpackBootstrap
 /******/ 	// The module cache
 /******/ 	var installedModules = {};
-
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
-
+/******/
 /******/ 		// Check if module is in cache
 /******/ 		if(installedModules[moduleId])
 /******/ 			return installedModules[moduleId].exports;
-
+/******/
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = installedModules[moduleId] = {
 /******/ 			i: moduleId,
 /******/ 			l: false,
 /******/ 			exports: {}
 /******/ 		};
-
+/******/
 /******/ 		// Execute the module function
 /******/ 		modules[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.l = true;
-
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-
-
+/******/
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = modules;
-
+/******/
 /******/ 	// expose the module cache
 /******/ 	__webpack_require__.c = installedModules;
-
+/******/
 /******/ 	// identity function for calling harmony imports with the correct context
 /******/ 	__webpack_require__.i = function(value) { return value; };
-
+/******/
 /******/ 	// define getter function for harmony exports
 /******/ 	__webpack_require__.d = function(exports, name, getter) {
 /******/ 		if(!__webpack_require__.o(exports, name)) {
@@ -56,7 +56,7 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 			});
 /******/ 		}
 /******/ 	};
-
+/******/
 /******/ 	// getDefaultExport function for compatibility with non-harmony modules
 /******/ 	__webpack_require__.n = function(module) {
 /******/ 		var getter = module && module.__esModule ?
@@ -65,21 +65,55 @@ return /******/ (function(modules) { // webpackBootstrap
 /******/ 		__webpack_require__.d(getter, 'a', getter);
 /******/ 		return getter;
 /******/ 	};
-
+/******/
 /******/ 	// Object.prototype.hasOwnProperty.call
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
-
+/******/
 /******/ 	// __webpack_public_path__
 /******/ 	__webpack_require__.p = "/";
-
+/******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 408);
+/******/ 	return __webpack_require__(__webpack_require__.s = 328);
 /******/ })
 /************************************************************************/
 /******/ ({
 
 /***/ 0:
 /***/ (function(module, exports) {
+
+module.exports = function(originalModule) {
+	if(!originalModule.webpackPolyfill) {
+		var module = Object.create(originalModule);
+		// module.parent = undefined by default
+		if(!module.children) module.children = [];
+		Object.defineProperty(module, "loaded", {
+			enumerable: true,
+			get: function() {
+				return module.l;
+			}
+		});
+		Object.defineProperty(module, "id", {
+			enumerable: true,
+			get: function() {
+				return module.i;
+			}
+		});
+		Object.defineProperty(module, "exports", {
+			enumerable: true,
+		});
+		module.webpackPolyfill = 1;
+	}
+	return module;
+};
+
+
+/***/ }),
+
+/***/ 1:
+/***/ (function(module, exports) {
+
+// this module is a runtime utility for cleaner component module output and will
+// be included in the final webpack user bundle
 
 module.exports = function normalizeComponent (
   rawScriptExports,
@@ -115,11 +149,12 @@ module.exports = function normalizeComponent (
 
   // inject cssModules
   if (cssModules) {
-    var computed = options.computed || (options.computed = {})
+    var computed = Object.create(options.computed || null)
     Object.keys(cssModules).forEach((function (key) {
       var module = cssModules[key]
       computed[key] = function () { return module }
     }))
+    options.computed = computed
   }
 
   return {
@@ -132,16 +167,25 @@ module.exports = function normalizeComponent (
 
 /***/ }),
 
-/***/ 1:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 127:
+/***/ (function(module, exports) {
+
+// removed by extract-text-webpack-plugin
+
+/***/ }),
+
+/***/ 162:
+/***/ (function(module, exports) {
+
+module.exports = ".THEME_NAME.md-icon.md-primary {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-icon.md-accent {\n  color: ACCENT-COLOR; }\n\n.THEME_NAME.md-icon.md-warn {\n  color: WARN-COLOR; }\n"
+
+/***/ }),
+
+/***/ 2:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = {
+/* WEBPACK VAR INJECTION */(function(module) {/* harmony default export */ __webpack_exports__["a"] = ({
   props: {
     mdTheme: String
   },
@@ -189,192 +233,53 @@ exports.default = {
       this.$material.setCurrentTheme('default');
     }
   }
-};
+});
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 101:
-/***/ (function(module, exports, __webpack_require__) {
+/***/ 20:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdIcon_vue__ = __webpack_require__(208);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__mdIcon_vue___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0__mdIcon_vue__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdIcon_theme__ = __webpack_require__(162);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1__mdIcon_theme___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1__mdIcon_theme__);
+/* harmony export (immutable) */ __webpack_exports__["default"] = install;
 
 
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-exports.default = install;
-
-var _mdIcon = __webpack_require__(288);
-
-var _mdIcon2 = _interopRequireDefault(_mdIcon);
-
-var _mdIcon3 = __webpack_require__(242);
-
-var _mdIcon4 = _interopRequireDefault(_mdIcon3);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function install(Vue) {
-  Vue.component('md-icon', _mdIcon2.default);
+  Vue.component('md-icon', __WEBPACK_IMPORTED_MODULE_0__mdIcon_vue___default.a);
 
-  Vue.material.styles.push(_mdIcon4.default);
+  Vue.material.styles.push(__WEBPACK_IMPORTED_MODULE_1__mdIcon_theme___default.a);
 }
 module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ }),
 
-/***/ 151:
-/***/ (function(module, exports, __webpack_require__) {
-
-"use strict";
-
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _mixin = __webpack_require__(1);
-
-var _mixin2 = _interopRequireDefault(_mixin);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-var registeredIcons = {}; //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-
-exports.default = {
-  props: {
-    mdSrc: String,
-    mdIconset: {
-      type: String,
-      default: 'material-icons'
-    }
-  },
-  data: function data() {
-    return {
-      svgContent: null,
-      imageSrc: null
-    };
-  },
-  mixins: [_mixin2.default],
-  watch: {
-    mdSrc: function mdSrc() {
-      this.svgContent = null;
-      this.imageSrc = null;
-      this.checkSrc();
-    }
-  },
-  methods: {
-    isImage: function isImage(mimetype) {
-      return mimetype.indexOf('image') >= 0;
-    },
-    isSVG: function isSVG(mimetype) {
-      return mimetype.indexOf('svg') >= 0;
-    },
-    setSVGContent: function setSVGContent(value) {
-      var _this = this;
-
-      this.svgContent = value;
-
-      this.$nextTick((function () {
-        _this.$el.children[0].removeAttribute('fill');
-      }));
-    },
-    loadSVG: function loadSVG() {
-      var _this2 = this;
-
-      if (!registeredIcons[this.mdSrc]) {
-        (function () {
-          var request = new XMLHttpRequest();
-          var self = _this2;
-
-          request.open('GET', _this2.mdSrc, true);
-
-          request.onload = function () {
-            var mimetype = this.getResponseHeader('content-type');
-
-            if (this.status >= 200 && this.status < 400 && self.isImage(mimetype)) {
-              if (self.isSVG(mimetype)) {
-                registeredIcons[self.mdSrc] = this.response;
-                self.setSVGContent(this.response);
-              } else {
-                self.loadImage();
-              }
-            } else {
-              console.warn('The file ' + self.mdSrc + ' is not a valid image.');
-            }
-          };
-
-          request.send();
-        })();
-      } else {
-        this.setSVGContent(registeredIcons[this.mdSrc]);
-      }
-    },
-    loadImage: function loadImage() {
-      this.imageSrc = this.mdSrc;
-    },
-    checkSrc: function checkSrc() {
-      if (this.mdSrc) {
-        if (this.mdSrc.indexOf('.svg') >= 0) {
-          this.loadSVG();
-        } else {
-          this.loadImage();
-        }
-      }
-    }
-  },
-  mounted: function mounted() {
-    this.checkSrc();
-  }
-};
-module.exports = exports['default'];
-
-/***/ }),
-
-/***/ 207:
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
-/***/ 242:
-/***/ (function(module, exports) {
-
-module.exports = ".THEME_NAME.md-icon.md-primary {\n  color: PRIMARY-COLOR; }\n\n.THEME_NAME.md-icon.md-accent {\n  color: ACCENT-COLOR; }\n\n.THEME_NAME.md-icon.md-warn {\n  color: WARN-COLOR; }\n"
-
-/***/ }),
-
-/***/ 288:
+/***/ 208:
 /***/ (function(module, exports, __webpack_require__) {
 
 
 /* styles */
-__webpack_require__(207)
+__webpack_require__(127)
 
-var Component = __webpack_require__(0)(
+var Component = __webpack_require__(1)(
   /* script */
-  __webpack_require__(151),
+  __webpack_require__(78),
   /* template */
-  __webpack_require__(348),
+  __webpack_require__(268),
   /* scopeId */
   null,
   /* cssModules */
   null
 )
-Component.options.__file = "/Users/mrufino/Projects/personal/github/vue-material/src/components/mdIcon/mdIcon.vue"
+Component.options.__file = "/home/luis/apps/vue-material/src/components/mdIcon/mdIcon.vue"
 if (Component.esModule && Object.keys(Component.esModule).some((function (key) {return key !== "default" && key !== "__esModule"}))) {console.error("named exports are not supported in *.vue files.")}
 if (Component.options.functional) {console.error("[vue-loader] mdIcon.vue: functional components are not supported with templates, they should use render functions.")}
 
@@ -396,7 +301,7 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ 348:
+/***/ 268:
 /***/ (function(module, exports, __webpack_require__) {
 
 module.exports={render:function (){var _vm=this;var _h=_vm.$createElement;var _c=_vm._self._c||_h;
@@ -430,11 +335,122 @@ if (false) {
 
 /***/ }),
 
-/***/ 408:
+/***/ 328:
 /***/ (function(module, exports, __webpack_require__) {
 
-module.exports = __webpack_require__(101);
+module.exports = __webpack_require__(20);
 
+
+/***/ }),
+
+/***/ 78:
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* WEBPACK VAR INJECTION */(function(module) {Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__ = __webpack_require__(2);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+
+
+
+var registeredIcons = {};
+
+/* harmony default export */ __webpack_exports__["default"] = ({
+  name: 'md-icon',
+  props: {
+    mdSrc: String,
+    mdIconset: {
+      type: String,
+      default: 'material-icons'
+    }
+  },
+  data: function data() {
+    return {
+      svgContent: null,
+      imageSrc: null
+    };
+  },
+  mixins: [__WEBPACK_IMPORTED_MODULE_0__core_components_mdTheme_mixin__["a" /* default */]],
+  watch: {
+    mdSrc: function mdSrc() {
+      this.svgContent = null;
+      this.imageSrc = null;
+      this.checkSrc();
+    }
+  },
+  methods: {
+    isImage: function isImage(mimetype) {
+      return mimetype.indexOf('image') >= 0;
+    },
+    isSVG: function isSVG(mimetype) {
+      return mimetype.indexOf('svg') >= 0;
+    },
+    setSVGContent: function setSVGContent(value) {
+      var _this = this;
+
+      this.svgContent = value;
+
+      this.$nextTick((function () {
+        _this.$el.children[0].removeAttribute('fill');
+      }));
+    },
+    loadSVG: function loadSVG() {
+      if (!registeredIcons[this.mdSrc]) {
+        var request = new XMLHttpRequest();
+        var self = this;
+
+        request.open('GET', this.mdSrc, true);
+
+        request.onload = function () {
+          var mimetype = this.getResponseHeader('content-type');
+
+          if (this.status >= 200 && this.status < 400 && self.isImage(mimetype)) {
+            if (self.isSVG(mimetype)) {
+              registeredIcons[self.mdSrc] = this.response;
+              self.setSVGContent(this.response);
+            } else {
+              self.loadImage();
+            }
+          } else {
+            console.warn('The file ' + self.mdSrc + ' is not a valid image.');
+          }
+        };
+
+        request.send();
+      } else {
+        this.setSVGContent(registeredIcons[this.mdSrc]);
+      }
+    },
+    loadImage: function loadImage() {
+      this.imageSrc = this.mdSrc;
+    },
+    checkSrc: function checkSrc() {
+      if (this.mdSrc) {
+        if (this.mdSrc.indexOf('.svg') >= 0) {
+          this.loadSVG();
+        } else {
+          this.loadImage();
+        }
+      }
+    }
+  },
+  mounted: function mounted() {
+    this.checkSrc();
+  }
+});
+module.exports = exports['default'];
+/* WEBPACK VAR INJECTION */}.call(__webpack_exports__, __webpack_require__(0)(module)))
 
 /***/ })
 

@@ -1,3 +1,4 @@
+#!/usr/bin/env bash
 # Based on Vue.js Release file
 # https://github.com/vuejs/vue/blob/dev/build/release.sh
 
